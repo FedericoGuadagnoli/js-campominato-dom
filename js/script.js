@@ -24,10 +24,6 @@ const select = document.getElementById('select');
 const grid = document.getElementById('grid');
 
 
-// Impostazioni iniziali
-
-
-
 
 //^ EVENTI DINAMICI -----------------------------------------
 
@@ -57,7 +53,8 @@ form.addEventListener('submit', function(event){
 
     const totalCells = rows * cols; // 100
 
-
+     // Preparo un contatore del punteggio dell'utente
+     let score = 0;
     
     //^ OPERAZIONI DI AVVIO -----------------------------------------
 
@@ -80,11 +77,19 @@ form.addEventListener('submit', function(event){
 
         //Aggancio il numero alla cella
         cell.append(number);
-        
+
+       
+
         // Aggiungo un evento al click della cella
         cell.addEventListener('click', function(){
-            cell.classList.toggle('clicked');
+            cell.classList.add('clicked');
             console.log(cell);
+
+            // Incremento il contatore
+            score ++;
+            console.log(score);
+
+           
         });
 
         //Appendo in pagina
