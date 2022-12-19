@@ -1,23 +1,10 @@
 console.log( 'JS OK');
 
-// L'utente clicca su un bottone che genererà una griglia di gioco quadrata.
-// Ogni cella ha un numero progressivo, da 1 a 100.
-// Ci saranno quindi 10 caselle per ognuna delle 10 righe.
-// Quando l'utente clicca su ogni cella, la cella cliccata
-// si colora di azzurro ed emetto un messaggio in console con il numero della cella cliccata.
-// MILESTONE 1
-// Prepariamo l'HTML ed il CSS per ottenere il risultato grafico che vediamo nell'immagine allegata.
-// MILESTONE 2
-// Rimuoviamo le celle che abbiamo inserito nell'HTML in modo da generarle tramite JS. Al click del bottone play, vengono generate 100 celle in 10 righe da 10 celle ciascuna.
-// MILESTONE 3
-// In ogni cella, deve comparire il numero corrispondente, in ordine da 1 a 100;
-// #MILESTONE 4
-// Al click sulla cella, stampiamo il numero della cella cliccata in console, poi coloriamo la cella d'azzurro!
-// BONUS
-// Aggiungere una select accanto al bottone di generazione, che fornisca una scelta tra tre diversi livelli di difficoltà:
-// - con difficoltà 1 => 100 caselle, con un numero compreso tra 1 e 100, divise in 10 caselle per 10 righe;
-// - con difficoltà 2 => 81 caselle, con un numero compreso tra 1 e 81, divise in 9 caselle per 9 righe;
-// - con difficoltà 3 => 49 caselle, con un numero compreso tra 1 e 49, divise in 7 caselle per 7 righe;
+// Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta: le bombe.
+// In seguito l'utente clicca su una cella: se il numero è presente nella lista dei numeri generati - abbiamo calpestato una bomba - la cella si colora di rosso e la partita termina.
+// Altrimenti la cella cliccata si colora di azzurro e l'utente può continuare a cliccare sulle altre celle.
+// La partita termina quando il giocatore clicca su una bomba o quando raggiunge il numero massimo possibile di numeri consentiti (ovvero quando ha rivelato tutte le celle che non sono bombe).
+// Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha cliccato su una cella che non era una bomba.
 
 
 //^ FUNZIONI --------------------------------------------------
@@ -54,7 +41,7 @@ form.addEventListener('submit', function(event){
     // Svuoto la griglia
     grid.innerHTML = '';
     
-    // 
+    // Decido il numero delle celle in base alla difficoltà
     const mode = select.value;
     console.log(mode);
     let rows = 10;
@@ -74,8 +61,8 @@ form.addEventListener('submit', function(event){
     
     //^ OPERAZIONI DI AVVIO -----------------------------------------
 
-    // Creo un ciclo per reeindirizzare le celle
-    for ( let i = 0; i < totalCells; i++ ) {
+    // Creo un ciclo per reindirizzare le celle
+    for ( let i = 1; i <= totalCells; i++ ) {
            
         // Creo una cella
         let cell = createCell();
@@ -89,7 +76,7 @@ form.addEventListener('submit', function(event){
         }
         
         // Creo il numero
-        const number = parseInt(i + 1);
+        const number = parseInt(i);
 
         //Aggancio il numero alla cella
         cell.append(number);
