@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="js/script.js"></script>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/css/bootstrap.min.css' integrity='sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==' crossorigin='anonymous'/>
+     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css' integrity='sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==' crossorigin='anonymous'/>
+    <link rel="stylesheet" href="css/style.css">
+    <title>Griglia Campo Minato</title>
+</head>
+<body>
+    <header>
+
+        <!-- Contenitore elementi header -->
+        <div class="container-fluid h-100 d-flex justify-content-between">
+
+            <!-- Logo e Titolo -->
+            <div class="d-flex gap-2 h-100 align-items-center">
+                <img src="img/Logo.png" alt="">
+                <h1 class="text-capitalize fw-bolder">campo minato</h1>
+            </div>
+
+            <!-- Form -->
+            <form action="" class="d-flex justify-content-between align-items-center gap-2" id="minefiled-form">
+                <label for="select" class="text-capitalize">difficoltà:</label>
+                <select name="select" id="select">
+                     <option value="easy">Easy</option>
+                     <option value="medium">Medium</option>
+                     <option value="hard">Hard</option>
+                </select>
+                <button id="submit" class="btn">Play</button>
+            </form>
+        </div>
+    </header>
+
+    <!-- Main -->
+    <main>
+        <div class="container d-flex align-items-center">
+            <div class="grid d-flex flex-wrap align-content-start" id="grid">    
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container-fluid h-100 d-flex align-items-center">
+            <Address class="m-0">Made with <i class="fa-solid fa-heart"></i>  by
+                <a href="">Boolean</a>
+            </Address>
+        </div>
+
+    </footer>
+</body>
+</html>

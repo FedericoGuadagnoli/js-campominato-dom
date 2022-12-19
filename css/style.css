@@ -1,0 +1,66 @@
+/* HEADER */
+
+header {
+    height: 80px;
+}
+
+header select {
+    width: 140px;
+    border-radius: 5px;
+    background-color: lightgrey;
+}
+
+header .btn {
+    width: 100px;
+    background-color: lightgrey;
+    text-align: center;
+    padding: 0;
+    border: 1px solid grey;
+}
+
+/* MAIN */
+main {
+    background-color: #7fffd4;
+}
+
+main .container {
+    height: 800px;
+} 
+.grid {
+    width: 60%;
+    height: 80%;
+    margin: auto auto;
+}
+
+.cell {
+    border: 1px solid black;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.easy {
+    width: calc(100% / 10);
+    height: calc(100% / 10);
+}
+
+.medium {
+    width: calc(100% / 9);
+    height: calc(100% / 9);
+}
+
+.hard {
+    width: calc(100% / 7);
+    height: calc(100% / 7);
+}
+.grid .clicked {
+    background-color: dodgerblue;
+    color: white;
+}
+
+
+/* FOOTER */
+footer {
+    height: 50px;
+}
