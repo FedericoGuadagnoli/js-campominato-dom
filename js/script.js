@@ -11,10 +11,32 @@ console.log( 'JS OK');
 const createCell = () => {
     const cell = document.createElement('div');
     cell.classList.add ('cell');
+    
     return cell;
 }
 
+// Genero un numero random senza ripetizioni
+const generateBombs = (maxNumber, totalNumbers) => {
+    const bombs = [];
+    
+    
+    while (bombs.length < totalNumbers) {
+      let random;
 
+      do {
+        random = Math.floor(Math.random() * maxNumber) + 1;
+      } while (bombs.includes(random));
+      bombs.push(random);
+    }
+    
+    return bombs;
+}
+
+// Creo una funzione per stabilire se vinco o perdo
+const GameOver = (score, hasHitBomb) => {
+    const message = hasHitBomb ? `Hai perso: Hai totalizzato ${score}` : `Hai vinto: Hai totalizzato ${score}`;
+    alert(message); 
+}
 //^ OPERAZIONI PRELIMINARI ------------------------------------
 
 // Prendo gli elementi dal DOM
@@ -22,7 +44,7 @@ const form = document.getElementById('minefiled-form');
 const submit = document.getElementById('submit');
 const select = document.getElementById('select');
 const grid = document.getElementById('grid');
-
+const scoreElement = document.getElementById('display-score');
 
 
 //^ EVENTI DINAMICI -----------------------------------------
@@ -55,12 +77,21 @@ form.addEventListener('submit', function(event){
 
      // Preparo un contatore del punteggio dell'utente
      let score = 0;
+     // Segno le bombe 
+     const totalBombs = 16;
+
+     // Prepareo il massimo del punteggio
+     const maxScore = totalCells - totalBombs;
+
+     // Genero le bombe 
+     const bombs = generateBombs(totalCells, totalBombs);
+     console.log(bombs);
     
     //^ OPERAZIONI DI AVVIO -----------------------------------------
 
     // Creo un ciclo per reindirizzare le celle
     for ( let i = 1; i <= totalCells; i++ ) {
-           
+        
         // Creo una cella
         let cell = createCell();
 
@@ -75,6 +106,7 @@ form.addEventListener('submit', function(event){
         // Creo il numero
         const number = parseInt(i);
 
+
         //Aggancio il numero alla cella
         cell.append(number);
 
@@ -82,19 +114,26 @@ form.addEventListener('submit', function(event){
 
         // Aggiungo un evento al click della cella
         cell.addEventListener('click', function(){
+            if(cell.classList.contains('clicked')) {
+                return;
+            }
             cell.classList.add('clicked');
-            console.log(cell);
-
-            // Incremento il contatore
-            score ++;
-            console.log(score);
-
-           
+            
+            // Verifico se vinco o perdo e quanti punti totalizzo
+            const hasHitBomb = bombs.includes(parseInt(this.innerText));
+            console.log(hasHitBomb);
+            if (hasHitBomb) {
+                cell.setAttribute('style', 'background-color: red', ' color:yellow');
+                GameOver(score, hasHitBomb);
+            } else {
+                scoreElement.innerText = `Punteggio: ${++score}`;
+                if (score === maxScore) {
+                  GameOver(score, hasHitBomb);
+                }
+            }         
         });
 
         //Appendo in pagina
         grid.appendChild(cell);
     }
-    
-    
 });
